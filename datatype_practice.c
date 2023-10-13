@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
+#include <string.h>
 
 // int main() {
 //     // int integer1;
@@ -23,13 +24,13 @@
 int main() {
     // //無號整數超過d有號可表示範圍：會overflow(無號應以無號表示)
     // unsigned int num = 3000000000;
-    int c = 1000000000000;
+    // int c = 1000000000000;
     // printf("int: %d. \n", num); // int: -1294967296.
     // printf("int: %u. \n", num); // int: 3000000000.
     // printf("%d\n", INT_MIN); // -2147483648
     // printf("%d\n", INT_MAX); // 2147483647
-    printf("%u\n", c);// 3567587328 = c % (UINT_MAX+1)
-    printf("%u\n", UINT_MAX); // 4294967295
+    // printf("%u\n", c);// 3567587328 = c % (UINT_MAX+1)
+    // printf("%u\n", UINT_MAX); // 4294967295
 
     // // float 與 double 因為bit為01儲存而存在精度的差別
     // float a = 123.45;
@@ -46,10 +47,17 @@ int main() {
     // printf("%f\n", d); // 3.3333
     // printf("%f\n", e); // 3.3333
 
-    char ch = 'A' + 1;
-    char ch2 = 'A' + '1';
-    printf("%c\n", ch);
-    printf("%c\n", ch2);
+    // char ch = 'A' + 1;
+    // char ch2 = 'A' + '1';
+    // printf("%c\n", ch);
+    // printf("%c\n", ch2);
+
+    int number;
+    if (scanf("%d", &number)==1) {
+        printf("%d\n", number);
+    } else {
+        printf("Error: Invalid input\n");
+    }
 
     return 0;
 }

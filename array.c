@@ -15,6 +15,36 @@ int max_num(int arg_v[], int n) {
     return max_num;
 };
 
+void str_print(char str[]){
+    // 同等於直接print str
+    // int i=0;
+    // while (str[i] != '\0'){
+    //     printf("%c", str[i]);
+    //     i++;
+    // }
+    // printf("\n");
+    printf("%s\n", str);
+}
+
+int str_len(char str[]) {
+    int i=0;
+    while (str[i] != '\0') {
+        i++;
+    }
+    return i;
+}
+
+void str_read(char str[], int n) {
+    int i=0;
+    for (i=0; i<n; i++){
+        scanf("%c", &str[i]);
+        if (str[i] == '\n') {
+            break;
+        }
+    }
+    str[i] = '\0';
+}
+
 int main(void) {
     // srand(time(0));
     // int counter_array[6] = {0, 0, 0, 0, 0, 0};
@@ -67,10 +97,21 @@ int main(void) {
     //     printf("%d\n", v[i]);
     // }
     // printf("%d\n", max_num(v, 10));
+    // return 0;
 
-    // 利用保留值算array長度
-    int v[5] = {1,2,3,4,-1};
-    printf("%d\n", length(v));
+    // // 利用保留值算array長度
+    // int v[5] = {1,2,3,4,-1};
+    // printf("%d\n", length(v));
+    // return 0;
+
+    char str[] = "Hello World"; // 尾端會自動加上'\0'
+    str_print(str);
+    printf("%zu\n", sizeof(str)); //若zu不支援則改u or lu
+    printf("%d\n", str_len(str));
+    char str2[15]; // 
+    str_read(str2, 14);
+    printf("%s\n", str2);
+    return 0;
 }
 
 void increase_array(int arg_v[]) {
