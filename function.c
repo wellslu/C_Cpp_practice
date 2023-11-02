@@ -28,6 +28,18 @@ int c_standard_function_int (int x) {
     return 0;
 }
 
+int add(int a, int b) {
+    return a + b;
+}
+
+int calculate(int (*op)(int, int)) {
+    int result = 1;
+    for (int i=2; i<=5; i++) {
+        result = op(result, i);
+    }
+    return result;
+}
+
 int main (void) {
     printf("i = %d\n", i);
     // // local variable
@@ -56,7 +68,18 @@ int main (void) {
     printf("recurrence function test - input a number: ");
     scanf("%d", &n);
     printf("%d\n", recurrence(n));
+
+    void hello(); //宣告function hello
+    void (*func)() = &hello; // 宣告定義func為一個指標指向為一個指標指向function hello
+    (*func)(); // 呼叫function
+    func();
+
+    printf("%d\n", calculate(add));
     return 0;
+}
+
+void hello() {
+    printf("hello world!\n");
 }
 
 int function_f(int x) {
