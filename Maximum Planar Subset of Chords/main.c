@@ -112,11 +112,10 @@ void findChord(int i, int j, int *inputs, int **case_matrix, int** chords) {
 	}
 }
 
-int main() {
+int main(int argc, char const *argv[]) {
 	int **mis_matrix, **case_matrix, **chords;
 
-    char file[] = "../5000.in";
-	struct C c = readFile(file);
+	struct C c = readFile(argv[1]);
 
 	// create a mis matrix to store mis[i, j] and a case matrix to store the use case of mis[i, j]
 	mis_matrix = mallocMatrix(c.vectries, c.vectries);
@@ -151,7 +150,7 @@ int main() {
 	// }
 
 	int i;
-	FILE *fp = fopen("../5000.out", "w");
+	FILE *fp = fopen(argv[2], "w");
 	fprintf(fp, "%d", mis_matrix[0][c.vectries-1]);
 	for (i=mis_matrix[0][c.vectries-1]-1; i>=0; --i){
 		fprintf(fp, "\n");
