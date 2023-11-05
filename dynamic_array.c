@@ -8,8 +8,8 @@ int main() {
         int input;
         scanf("%d", &input);
         if (input == 0) break;
-        // // int larger[length+1]; //大誇胡結束後，larger所指向的list會被釋放(區域變數)，因此變成numbers指向一處未定義行為
-        // int* larger = malloc(sizeof(int) * (length+1)); //不斷使用沒釋放的記憶體最後會倒是memory leak
+        // // int larger[length+1]; //大括弧結束後，larger所指向的list會被釋放(區域變數)，因此變成numbers指向一處未定義行為
+        // int* larger = malloc(sizeof(int) * (length+1)); //不斷使用沒釋放的記憶體最後會導致memory leak
         // for (int i=0; i<length; i++) larger[i] = numbers[i];
         // free(numbers); //先釋放前一輪的list
         // numbers = larger;
