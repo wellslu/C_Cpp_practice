@@ -113,10 +113,9 @@ void findChord(int i, int j, int *inputs, int **case_matrix, int** chords) {
 }
 
 int main() {
-	int *outputs, **mis_matrix, **case_matrix, **chords;
-	int result;
+	int **mis_matrix, **case_matrix, **chords;
 
-    char file[] = "/Users/wellslu/Desktop/C_practice/12.in";
+    char file[] = "../5000.in";
 	struct C c = readFile(file);
 
 	// create a mis matrix to store mis[i, j] and a case matrix to store the use case of mis[i, j]
@@ -129,25 +128,35 @@ int main() {
 	// find chords in Maximum Planar Subset of mis[0, 2n]
 	findChord(0, c.vectries-1, c.inputs, case_matrix, chords);
 	
-	int i=0, j=0;
-	for (i=0; i<c.vectries; ++i){
-		for (j=0; j<c.vectries; ++j){
-			printf("%d, ", case_matrix[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
-	for (i=0; i<c.vectries; ++i){
-		for (j=0; j<c.vectries; ++j){
-			printf("%d, ", mis_matrix[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
+	// int i=0, j=0;
+	// for (i=0; i<c.vectries; ++i){
+	// 	for (j=0; j<c.vectries; ++j){
+	// 		printf("%d, ", case_matrix[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("\n");
+	// for (i=0; i<c.vectries; ++i){
+	// 	for (j=0; j<c.vectries; ++j){
+	// 		printf("%d, ", mis_matrix[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("\n");
+	// for (i=mis_matrix[0][c.vectries-1]-1; i>=0; --i){
+	// 	for (j=0; j<2; ++j){
+	// 		printf("%d, ", chords[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	int i;
+	FILE *fp = fopen("../5000.out", "w");
+	fprintf(fp, "%d", mis_matrix[0][c.vectries-1]);
 	for (i=mis_matrix[0][c.vectries-1]-1; i>=0; --i){
-		for (j=0; j<2; ++j){
-			printf("%d, ", chords[i][j]);
-		}
-		printf("\n");
+		fprintf(fp, "\n");
+        fprintf(fp, "%d %d", chords[i][0], chords[i][1]);
 	}
+    fclose(fp);
+	return 0;
 }
