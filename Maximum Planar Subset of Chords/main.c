@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int buffsize = 10000;
-
 struct C {
 	int *inputs;
 	int vectries;
@@ -14,15 +12,8 @@ struct C readFile(char const *fileName) {
     int *inputs;
 	int n;
 
-	inputs = malloc(buffsize * sizeof(int));
- 
-    if (NULL == fp) {
-        printf("the file can't be opened or is not in direction\n");
-    }
-
-    n = 0;
-	fgetc(fp);
 	fscanf(fp, "%d", &n);
+	inputs = malloc((n+1) * sizeof(int));
 	for (n=0; fgetc(fp) != EOF; ++n) {
 		fscanf(fp, "%d", &inputs[n]);
 	}
@@ -126,28 +117,6 @@ int main(int argc, char const *argv[]) {
 	chords = mallocMatrix(mis_matrix[0][c.vectries-1], 2);
 	// find chords in Maximum Planar Subset of mis[0, 2n]
 	findChord(0, c.vectries-1, c.inputs, case_matrix, chords);
-	
-	// int i=0, j=0;
-	// for (i=0; i<c.vectries; ++i){
-	// 	for (j=0; j<c.vectries; ++j){
-	// 		printf("%d, ", case_matrix[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("\n");
-	// for (i=0; i<c.vectries; ++i){
-	// 	for (j=0; j<c.vectries; ++j){
-	// 		printf("%d, ", mis_matrix[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("\n");
-	// for (i=mis_matrix[0][c.vectries-1]-1; i>=0; --i){
-	// 	for (j=0; j<2; ++j){
-	// 		printf("%d, ", chords[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
 
 	int i;
 	FILE *fp = fopen(argv[2], "w");
